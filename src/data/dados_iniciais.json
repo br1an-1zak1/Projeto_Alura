@@ -84,40 +84,32 @@
         {
           "titulo": "Teste de Turing",
           "url": "https://www.youtube.com/watch?v=BaPGU4JWa34"
-        },
-        {
-          "titulo": "O que é Data Science?",
-          "url": "https://www.youtube.com/watch?v=5b9Z8toVaAU&t=9s"
-        },
-        {
-          "titulo": "Melhor forma de aprender Python",
-          "url": "https://www.youtube.com/watch?v=Gojqw9BQ5qY"
-        },
-        {
-          "titulo": "Como ingressar no mercado de Data Science?",
-          "url": "https://www.youtube.com/watch?v=gxyjGmOV540"
         }
       ]
     },
     {
-      "titulo": "Filmes",
+      "titulo": "Reviews Animes favoritos",
       "cor": "orange",
       "videos": [
         {
-          "titulo": "Interestellar",
-          "url": "https://www.youtube.com/watch?v=frD_IiY_A3E"
+          "titulo": "One piece",
+          "url": "https://www.youtube.com/watch?v=VxTXE_P65X8"
         },
         {
-          "titulo": "Gattaca",
-          "url": "https://www.youtube.com/watch?v=Dl0tYLbrhhs"
+          "titulo": "One punch man",
+          "url": "https://www.youtube.com/watch?v=vHCtypfSGZg"
         },
         {
-          "titulo": "A Chegada",
-          "url": "https://www.youtube.com/watch?v=rNciXGzYZms"
+          "titulo": "Mushishi",
+          "url": "https://www.youtube.com/watch?v=5mfo_Niyas0"
         },
         {
-          "titulo": "Feitiço do Tempo",
-          "url": "https://www.youtube.com/watch?v=zi8d69P9NvI"
+          "titulo": "Steins;Gate",
+          "url": "https://www.youtube.com/watch?v=zRbmJBrwLBQ"
+        }, 
+        {
+          "titulo": "Dr. Stone",
+          "url": "https://www.youtube.com/watch?v=zk0BmOpYZ2I"
         }
       ]
     },
