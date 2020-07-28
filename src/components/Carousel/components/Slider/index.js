@@ -3,6 +3,10 @@ import React from 'react';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
 
+import next from "../../../../assets/img/next.png";
+import prev from "../../../../assets/img/return.png";
+
+
 const Container = styled.ul`
   padding: 0;
   margin: 0;
@@ -15,8 +19,10 @@ const Container = styled.ul`
     width: 30px;
     height: 30px;
     transform: initial;
+    
     &:before {
       font-size: 30px;
+      color: transparent;
     }
   }
   
@@ -39,15 +45,37 @@ export const SliderItem = styled.li`
 `;
 
 
-const Slider = ({ children }) => (
+function Arrow(props){
+  const {className, style, onClick, cor} = props;
+
+  return(
+    <div
+      className={className}
+      style={{
+        ...style, 
+        backgroundImage: `URL(${props.next ? next : prev})`, 
+        backgroundColor: cor,  
+        backgroundPosition:"center", 
+        backgroundSize: "cover",
+        borderRadius: "50px"
+      }}
+      onClick={onClick}
+    >
+    </div>
+  )
+}
+
+const Slider = ({ children, cor }) => (
   <Container>
     <SlickSlider {...{
       dots: false,
-      infinite: false,
+      infinite: true,
       speed: 300,
       centerMode: false,
       variableWidth: true,
       adaptiveHeight: true,
+      nextArrow: <Arrow next cor={cor}/>,
+      prevArrow: <Arrow cor={cor}/>,
     }}
     >
       {children}
