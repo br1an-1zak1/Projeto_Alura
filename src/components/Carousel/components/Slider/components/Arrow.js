@@ -15,7 +15,8 @@ export default function Arrow({
         backgroundImage: `URL(${next ? ImgNext : ImgPrev})`,
         backgroundColor: cor,
         backgroundPosition: 'center',
-        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '20px 20px',
         borderRadius: '50px',
       }}
       onClick={onClick}
