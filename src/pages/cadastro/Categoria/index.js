@@ -1,81 +1,86 @@
-import React, { useState } from "react";
-import PageDefault from "../../../components/PageDefault";
-import { Link } from "react-router-dom";
-import FormField from "../../../components/FormField";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
+import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 export default function CadastroCategoria() {
-  
   const valoresIniciais = {
     nome: '',
     descricao: '',
-    cor: '#000000'
+    cor: '#000000',
   };
   const [categorias, setCategorias] = useState([]);
   const [valores, setValores] = useState(valoresIniciais);
-  
 
-  function setValor(chave, valor){
+  useEffect(() => {
+    const URL_TOP = 'http://localhost:8080/categorias';
+    fetch(URL_TOP)
+      .then(async (res) => {
+        const resposta = await res.json();
+        setCategorias([...resposta]);
+      });
+  }, []);
+
+  function setValor(chave, valor) {
     setValores({
       ...valores,
       [chave]: valor,
-    })
+    });
   }
 
-  function handleChange(infoDoEvento){
+  function handleChange(infoDoEvento) {
     // const {getAttribute, value} = infoDoEvento.target;
     setValor(
       infoDoEvento.target.getAttribute('name'),
-      infoDoEvento.target.value
-    )
+      infoDoEvento.target.value,
+    );
   }
 
   return (
-    <PageDefault style={{ color: "white" }}>
-      <h1>Cadastro de Categoria: {valores.nome}</h1>
+    <PageDefault style={{ color: 'white' }}>
+      <h1>
+        Cadastro de Categoria:
+        {' '}
+        {valores.nome}
+      </h1>
 
-      <form onSubmit={function handleSubmit(infosDoEvento){
+      <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
         setCategorias([...categorias, valores]);
         setValores(valoresIniciais);
-      }}>
+      }}
+      >
 
-        <FormField 
-          descricao="Nome da categoria: "
+        <FormField
+          label="Nome da categoria: "
           name="nome"
           type="text"
           value={valores.nome}
-          onChange={ handleChange }
+          onChange={handleChange}
         />
 
-        
-        <div>
-          <label>
-            Descrição da Categoria:
-            <textarea
-              type="text"
-              name="descricao"
-              value={valores.descricao}
-              onChange={ handleChange }
-            />
-          </label>
-        </div>
-        
-        <FormField 
-          descricao="Cor: "
+        <FormField
+          label="Descrição da Categoria: "
+          type="textarea"
+          name="descricao"
+          value={valores.descricao}
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="Cor: "
           type="color"
           name="cor"
           value={valores.cor}
           onChange={handleChange}
         />
 
-
-        <button>Cadastrar</button>
+        <Button as="a">Cadastrar</Button>
       </form>
 
       <ul>
-        {categorias.map((categoria, index) => {
-          return <li key={`${categoria.nome}_${index}`}>{categoria.nome}</li>;
-        })}
+        {categorias.map((categoria) => <li key={`${categoria.nome}`}>{categoria.nome}</li>)}
       </ul>
 
       <Link to="/">Ir para Home</Link>
