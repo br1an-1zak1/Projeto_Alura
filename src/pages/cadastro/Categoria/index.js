@@ -15,9 +15,9 @@ export default function CadastroCategoria() {
   const [valores, setValores] = useState(valoresIniciais);
 
   useEffect(() => {
-    const URL_TOP = 't'; // window.location.hostname.includes('localhost')
-    // ? 'http://localhost:8080/categorias'
-    // : 'https://bkflix.herokuapp.com/categorias';
+    const URL_TOP = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://bkflix.herokuapp.com/categorias';
 
     fetch(URL_TOP)
       .then(async (res) => {
