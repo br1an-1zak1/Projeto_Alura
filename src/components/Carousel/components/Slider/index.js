@@ -2,10 +2,9 @@
 import React from 'react';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import next from "../../../../assets/img/next.png";
-import prev from "../../../../assets/img/return.png";
-
+import Arrow from './components/Arrow';
 
 const Container = styled.ul`
   padding: 0;
@@ -44,27 +43,6 @@ export const SliderItem = styled.li`
   }
 `;
 
-
-function Arrow(props){
-  const {className, style, onClick, cor} = props;
-
-  return(
-    <div
-      className={className}
-      style={{
-        ...style, 
-        backgroundImage: `URL(${props.next ? next : prev})`, 
-        backgroundColor: cor,  
-        backgroundPosition:"center", 
-        backgroundSize: "cover",
-        borderRadius: "50px"
-      }}
-      onClick={onClick}
-    >
-    </div>
-  )
-}
-
 const Slider = ({ children, cor }) => (
   <Container>
     <SlickSlider {...{
@@ -74,8 +52,8 @@ const Slider = ({ children, cor }) => (
       centerMode: false,
       variableWidth: true,
       adaptiveHeight: true,
-      nextArrow: <Arrow next cor={cor}/>,
-      prevArrow: <Arrow cor={cor}/>,
+      nextArrow: <Arrow next cor={cor} />,
+      prevArrow: <Arrow cor={cor} />,
     }}
     >
       {children}
@@ -83,4 +61,14 @@ const Slider = ({ children, cor }) => (
   </Container>
 );
 
-export default Slider; 
+Slider.defaultProps = {
+  cor: '',
+  children: [PropTypes.object],
+};
+
+Slider.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.object),
+  cor: PropTypes.string,
+};
+
+export default Slider;

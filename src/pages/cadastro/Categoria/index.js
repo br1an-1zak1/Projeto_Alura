@@ -76,7 +76,7 @@ export default function CadastroCategoria() {
           onChange={handleChange}
         />
 
-        <Button as="a">Cadastrar</Button>
+        <Button>Cadastrar</Button>
       </form>
 
       <ul>
