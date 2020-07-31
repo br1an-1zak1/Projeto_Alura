@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import AnimationLoadings from './style';
 
 export default function CadastroCategoria() {
   const valoresIniciais = {
@@ -14,7 +15,10 @@ export default function CadastroCategoria() {
   const [valores, setValores] = useState(valoresIniciais);
 
   useEffect(() => {
-    const URL_TOP = 'http://localhost:8080/categorias';
+    const URL_TOP = 't'; // window.location.hostname.includes('localhost')
+    // ? 'http://localhost:8080/categorias'
+    // : 'https://bkflix.herokuapp.com/categorias';
+
     fetch(URL_TOP)
       .then(async (res) => {
         const resposta = await res.json();
@@ -79,7 +83,15 @@ export default function CadastroCategoria() {
         <Button>Cadastrar</Button>
       </form>
 
-      <ul>
+      {/* caso não haja categorias, será true e vai mostrar a div,
+        se não, será false e não carrega a div */}
+      {categorias.length === 0 && (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <AnimationLoadings />
+        </div>
+      )}
+
+      <ul style={{ display: 'flex', justifyContent: 'center' }}>
         {categorias.map((categoria) => <li key={`${categoria.nome}`}>{categoria.nome}</li>)}
       </ul>
 

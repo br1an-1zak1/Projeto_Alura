@@ -8,7 +8,7 @@ const Main = styled.main`
   background-color: var(--black);
   color: var(--white);
   flex: 1;
-  padding: 50px 0 5% 5%;
+  padding: 0 50px;
 `;
 
 export default function PageDefault({ children }) {
@@ -24,5 +24,5 @@ export default function PageDefault({ children }) {
 }
 
 PageDefault.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
