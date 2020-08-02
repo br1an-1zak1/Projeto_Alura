@@ -5,6 +5,7 @@ import './index.css';
 import Home from './pages/Home';
 import CadastroVideo from './pages/cadastro/Video';
 import CadastroCategoria from './pages/cadastro/Categoria';
+import Page404 from './pages/Page404';
 
 ReactDOM.render(
   // BrowserRouter tipo container que armazena as rotas
@@ -18,7 +19,7 @@ ReactDOM.render(
       <Route path="/cadastro/video" component={CadastroVideo} />
       <Route path="/cadastro/categoria" component={CadastroCategoria} />
       {/* quando não existir a rota será renderizado essa 404 */}
-      <Route component={() => 'Erro 404'} />
+      <Route component={Page404} />
 
     </Switch>
   </BrowserRouter>,
