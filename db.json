@@ -53,6 +53,18 @@
       "url": "https://www.youtube.com/watch?v=EkbM5EfFyME",
       "categoriaId": 2,
       "id": 6
+    },
+    {
+      "titulo": "Musica relaxante #2",
+      "url": "https://www.youtube.com/watch?v=TJ0JmqpN9o4&list=LLQoamWUFIZwoiROGx6I16gg&index=15&t=0s",
+      "categoriaId": 2,
+      "id": 7
+    },
+    {
+      "titulo": "Técnica Pomodoro",
+      "url": "https://www.youtube.com/watch?v=v7Os1_Tex1A",
+      "categoriaId": 2,
+      "id": 8
     }
   ]
 }

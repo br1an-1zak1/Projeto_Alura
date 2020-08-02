@@ -18,11 +18,21 @@ const VideoCardContainer = styled.a`
   display: flex;
   align-items: flex-end;
   padding: 16px;
-
-  transition: opacity .3s;
+  transition: opacity 1s;
+  transition: ease 1s;
   &:hover,
   &:focus {
-    opacity: .5;
+    opacity: .8;
+    transform: scale(1.02); 
+    &:before{
+      /* as aspas não transformam o codigo dinamico em string  */
+      content: '${({ description }) => description || 'Esqueceram do titulo'}';
+      background-color: ${({ backColor }) => backColor || 'red'};
+      /* opacity: 0.9; */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
   }
   
   &:not(:first-child) {
