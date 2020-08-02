@@ -28,8 +28,6 @@ export default function CadastroVideo() {
       });
   }, []);
 
-  console.log(categoryTitles);
-
   return (
     <PageDefault paddingAll={30} style={{ color: 'white' }}>
       <h1>Cadastro de Video</h1>
