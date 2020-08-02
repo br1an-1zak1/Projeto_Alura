@@ -24,6 +24,7 @@ const Button = styled.button`
   &:focus {
     opacity: .5;
   }
+  margin: ${({ marginall }) => `${marginall}px`}
 `;
 
 export default Button;

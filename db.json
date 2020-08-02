@@ -2,24 +2,19 @@
   "categorias": [
     {
       "id": 1,
-      "titulo": "Reviews Animes favoritos",
+      "titulo": "Reviews de Animes",
       "cor": "#6b5be2",
+      "descricao": "Reviews de animes preferidos",
       "link_extra": {
         "text": "Site para assistir os animes",
         "url": "https://www.crunchyroll.com/pt-br"
       }
     },
     {
-      "id": 2,
-      "titulo": "Back-end",
-      "descricao": "Categgoria desc",
-      "cor": "#00C86F"
-    },
-    {
-      "id": 3,
-      "titulo": "Front-end",
-      "descricao": "Categgoria desc",
-      "cor": "#cbd1ff"
+      "titulo": "Foco no foco",
+      "descricao": "Musicas e práticas que ajudam a se concentrar",
+      "cor": "#da4949",
+      "id": 2
     }
   ],
   "videos": [
@@ -54,118 +49,10 @@
       "url": "https://www.youtube.com/watch?v=zk0BmOpYZ2I"
     },
     {
-      "id": 6,
-      "categoriaId": 3,
-      "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-      "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
-    },
-    {
-      "id": 7,
-      "categoriaId": 3,
-      "titulo": "SEO com React",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
-    },
-    {
-      "id": 8,
+      "titulo": "Musica relaxante #1",
+      "url": "https://www.youtube.com/watch?v=EkbM5EfFyME",
       "categoriaId": 2,
-      "titulo": "PERCURSO em NÍVEL em ÁRVORE BINÁRIA | Estruturas de Dados #14",
-      "url": "https://www.youtube.com/watch?v=UOK7nS2E9xM"
-    },
-    {
-      "id": 9,
-      "categoriaId": 2,
-      "titulo": "Coders4Tips - S01E04: GitHub CLI - Uma Nova Experiência no Github!",
-      "url": "https://www.youtube.com/watch?v=6o6-bKOZOEY"
-    },
-    {
-      "id": 10,
-      "categoriaId": 2,
-      "titulo": "Programei 4 robôs que criam vídeos para mim no YouTube",
-      "url": "https://www.youtube.com/watch?v=kjhu1LEmRpY"
-    },
-    {
-      "id": 11,
-      "categoriaId": 2,
-      "titulo": "API: Dicionário do Programador",
-      "url": "https://www.youtube.com/watch?v=vGuqKIRWosk"
-    },
-    {
-      "id": 12,
-      "categoriaId": 2,
-      "titulo": "Usando Git Direito",
-      "url": "https://www.youtube.com/watch?v=6OokP-NE49k"
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categorias": 1,
-      "id": 13
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 14
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 15
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 16
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 17
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 18
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 19
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 20
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 21
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 1,
-      "id": 22
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 3,
-      "id": 23
-    },
-    {
-      "titulo": "Video Padrao",
-      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc",
-      "categoriaId": 2,
-      "id": 24
+      "id": 6
     }
   ]
 }

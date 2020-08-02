@@ -10,15 +10,17 @@ import categoriesRepository from '../../../repositories/categorias';
 
 export default function CadastroVideo() {
   const valoresIniciais = {
-    titulo: 'Video Padrao',
-    url: 'https://www.youtube.com/watch?v=vAV4Vy4jfkc',
-    categoria: 'Reviews Animes favoritos',
+    titulo: '',
+    url: '',
+    categoria: '',
   };
 
   const history = useHistory();
   const { valores, handleChange } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
+  const [errors, setErrors] = useState({});
   const categoryTitles = categorias.map(({ titulo }) => titulo);
+  const isValid = categoryTitles.includes(valores.categoria);
 
   useEffect(() => {
     categoriesRepository
@@ -36,6 +38,11 @@ export default function CadastroVideo() {
         event.preventDefault();
         // alert('Video Cadastrado com sucesso!');
 
+        if (!isValid) {
+          setErrors({ categories: true });
+          return;
+        }
+
         const categoriaEscolhida = categorias.find(
           (categoria) => categoria.titulo === valores.categoria,
         );
@@ -46,8 +53,9 @@ export default function CadastroVideo() {
           categoriaId: categoriaEscolhida.id,
         })
           .then(() => {
-            // console.log('Cadastrado o video');
-            // utilizado para ir em outra rota
+            // **console.log('Cadastrado o video');
+            // caso ocorra tudo certo...
+            // é utilizado para ir em outra rota...
             history.push('/');
           });
       }}
@@ -82,14 +90,16 @@ export default function CadastroVideo() {
           onChange={handleChange}
           suggestions={categoryTitles}
         />
-
         <Button>Cadastrar</Button>
+
+        <Button marginall={30} as={Link} to="/cadastro/categoria">
+          Cadastrar Categoria
+        </Button>
+
+        {errors.categories && (<span style={{ color: 'tomato', paddingLeft: '20px' }}> Nome da categoria não é válido </span>)}
 
       </form>
 
-      <Link to="/cadastro/categoria">
-        Cadastrar Categoria
-      </Link>
     </PageDefault>
   );
 }

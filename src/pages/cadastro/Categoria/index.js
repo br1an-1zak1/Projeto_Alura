@@ -1,10 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import AnimationLoadings from '../../../components/AnimationLoadings';
 import useForm from '../../../hooks/useForm';
+import categoriasRepository from '../../../repositories/categorias';
+
+const Tabela = styled.table`
+  /* width: 70%; */
+  margin: 5% auto;
+  border-spacing: 0;
+  td, th{
+    background-color: #53585D;
+    width: 500px;
+    padding: 10px;
+  }
+  td + td {
+    text-align: center;
+  }
+  tbody{
+    border-radius: 10%;
+  }
+`;
 
 export default function CadastroCategoria() {
   const valoresIniciais = {
@@ -12,18 +31,23 @@ export default function CadastroCategoria() {
     descricao: '',
     cor: '#000000',
   };
+
   const [categorias, setCategorias] = useState([]);
   const { valores, handleChange, clearForm } = useForm(valoresIniciais);
 
   useEffect(() => {
-    const URL_TOP = window.location.hostname.includes('localhost')
-      ? 'http://localhost:8080/categorias'
-      : 'https://bkflix.herokuapp.com/categorias';
+    // const URL_TOP = window.location.hostname.includes('localhost')
+    //   ? 'http://localhost:8080/categorias'
+    //   : 'https://bkflix.herokuapp.com/categorias';
 
-    fetch(URL_TOP)
-      .then(async (res) => {
-        const resposta = await res.json();
-        setCategorias([...resposta]);
+    // fetch(URL_TOP)
+    //   .then(async (res) => {
+    //     const resposta = await res.json();
+    //     setCategorias([...resposta]);
+    //   });
+    categoriasRepository.getAll()
+      .then((res) => {
+        setCategorias([...res]);
       });
   }, []);
 
@@ -38,6 +62,11 @@ export default function CadastroCategoria() {
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
         setCategorias([...categorias, valores]);
+        categoriasRepository.create({
+          titulo: valores.nome,
+          descricao: valores.descricao,
+          cor: valores.cor,
+        });
         clearForm();
       }}
       >
@@ -67,17 +96,38 @@ export default function CadastroCategoria() {
         />
 
         <Button>Cadastrar</Button>
+        <Button marginall={30} as={Link} to="/">Ir para Home</Button>
+
       </form>
+
+      <Tabela>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Cor</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          {
+            categorias.map((categoria) => (
+              <tr key={`${categoria.titulo}`}>
+                <td>{categoria.titulo}</td>
+                <td>{categoria.descricao}</td>
+                <td>
+                  <input style={{ backgroundColor: '#53585D' }} disabled type="color" value={categoria.cor} />
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </Tabela>
 
       {/* caso não haja categorias, será true e vai mostrar a div,
         se não, será false e não carrega a div */}
       {categorias.length === 0 && (<AnimationLoadings />)}
 
-      <ul style={{ display: 'flex', justifyContent: 'center', flexFlow: 'column' }}>
-        {categorias.map((categoria) => <li key={`${categoria.titulo}`}>{categoria.titulo}</li>)}
-      </ul>
-
-      <Link to="/">Ir para Home</Link>
     </PageDefault>
   );
 }

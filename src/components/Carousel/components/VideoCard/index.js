@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VideoCardContainer } from './styles';
+import VideoCardContainer from './styles';
 
 function getYouTubeId(youtubeURL) {
   return youtubeURL
