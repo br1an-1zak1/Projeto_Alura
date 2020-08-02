@@ -33,7 +33,9 @@ export default function CadastroCategoria() {
   };
 
   const [categorias, setCategorias] = useState([]);
+  const [errors, setErrors] = useState({});
   const { valores, handleChange, clearForm } = useForm(valoresIniciais);
+  const isValid = valores.nome.trim();
 
   useEffect(() => {
     // const URL_TOP = window.location.hostname.includes('localhost')
@@ -61,6 +63,14 @@ export default function CadastroCategoria() {
 
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
+
+        if (!isValid) {
+          setErrors({
+            nome: true,
+          });
+          return;
+        }
+
         setCategorias([...categorias, valores]);
         categoriasRepository.create({
           titulo: valores.nome,
@@ -97,7 +107,7 @@ export default function CadastroCategoria() {
 
         <Button>Cadastrar</Button>
         <Button marginall={30} as={Link} to="/">Ir para Home</Button>
-
+        {errors.nome && (<span style={{ color: 'tomato' }}> O campo de nome está vazio. </span>)}
       </form>
 
       <Tabela>
