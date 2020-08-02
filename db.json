@@ -15,6 +15,12 @@
       "descricao": "Musicas e práticas que ajudam a se concentrar",
       "cor": "#da4949",
       "id": 2
+    },
+    {
+      "titulo": "Front-End",
+      "descricao": "Videos relacionados a JavaScript",
+      "cor": "#58df68",
+      "id": 3
     }
   ],
   "videos": [
@@ -65,6 +71,36 @@
       "url": "https://www.youtube.com/watch?v=v7Os1_Tex1A",
       "categoriaId": 2,
       "id": 8
+    },
+    {
+      "titulo": "TypeWriter",
+      "url": "https://www.youtube.com/watch?v=zx2axQoY_YM&t=106s",
+      "categoriaId": 3,
+      "id": 9
+    },
+    {
+      "titulo": "Validação de formulário",
+      "url": "https://www.youtube.com/watch?v=-nYNd6EuZHU&t=196s",
+      "categoriaId": 3,
+      "id": 10
+    },
+    {
+      "titulo": "10 projetos para treinar programação",
+      "url": "https://www.youtube.com/watch?v=fYR9L2ZmodM&t=66s",
+      "categoriaId": 3,
+      "id": 11
+    },
+    {
+      "titulo": "principios SOLID em API REST",
+      "url": "https://www.youtube.com/watch?v=vAV4Vy4jfkc&t=4s",
+      "categoriaId": 3,
+      "id": 12
+    },
+    {
+      "titulo": "6 dicas para ter mais foco",
+      "url": "https://www.youtube.com/watch?v=iYPwk_ORfkQ",
+      "categoriaId": 2,
+      "id": 13
     }
   ]
 }
