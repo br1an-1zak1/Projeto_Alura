@@ -27,12 +27,12 @@ export const AnimationLoading = styled.div`
   ${({ borda }) => borda}: 5px solid #2EABFF;
   ${({ bordaParalela }) => bordaParalela}: 5px solid #FFF312;
   border-radius: 50%;
-  animation: ${({ isLeft }) => (isLeft ? rotation : inverseRotation)} 2s linear infinite;
+  animation: ${({ isLeft }) => (isLeft ? rotation : inverseRotation)} 1s linear infinite;
 `;
 
 export default function AnimationLoadings() {
   return (
-    <>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <AnimationLoading borda="border-bottom" isLeft>
         {/* texto de carregamento de dados */}
       </AnimationLoading>
@@ -45,6 +45,6 @@ export default function AnimationLoadings() {
       <AnimationLoading borda="border-top">
         {/* texto de carregamento de dados */}
       </AnimationLoading>
-    </>
+    </div>
   );
 }

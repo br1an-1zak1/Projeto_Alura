@@ -8,14 +8,14 @@ const Main = styled.main`
   background-color: var(--black);
   color: var(--white);
   flex: 1;
-  padding: 0 50px;
+  padding: ${({ paddingAll }) => `${paddingAll}px`};
 `;
 
-export default function PageDefault({ children }) {
+export default function PageDefault({ children, paddingAll }) {
   return (
     <>
       <Menu />
-      <Main>
+      <Main paddingAll={paddingAll}>
         {children}
       </Main>
       <Footer />
@@ -23,6 +23,11 @@ export default function PageDefault({ children }) {
   );
 }
 
+PageDefault.defaultProps = {
+  paddingAll: 0,
+};
+
 PageDefault.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  paddingAll: PropTypes.number,
 };

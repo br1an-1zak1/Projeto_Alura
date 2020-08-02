@@ -73,12 +73,14 @@ const Input = styled.input`
 `;
 
 function FormField({
-  label, name, type, value, onChange,
+  label, name, type, value, onChange, suggestions,
 }) {
   const fieldId = `Id_${name}`;
 
   const isTextArea = type === 'textarea';
   const tag = isTextArea ? 'textarea' : 'input';
+
+  const hasSuggestion = Boolean(suggestions.length);
 
   return (
     <FormfieldWrapper>
@@ -89,10 +91,35 @@ function FormField({
           type={type}
           value={value}
           onChange={onChange}
+          autoComplete={hasSuggestion ? 'off' : 'on'}
+          list={hasSuggestion ? `suggestionFor_${fieldId}` : undefined}
         />
         <Label.Text>
           {label}
         </Label.Text>
+
+        {/*
+          está sendo utilizado uma datalist que permite
+          mostrar opções do que deve ser digitado
+        */}
+
+        {
+          hasSuggestion && (
+            <datalist id={`suggestionFor_${fieldId}`}>
+              {
+                suggestions.map((suggestion) => (
+                  <option
+                    value={suggestion}
+                    key={`suggestionFor_${fieldId}_option_${suggestion}`}
+                  >
+                    {suggestion}
+                  </option>
+                ))
+              }
+            </datalist>
+          )
+        }
+
       </Label>
     </FormfieldWrapper>
   );
@@ -106,15 +133,18 @@ function FormField({
 FormField.defaultProps = {
   type: 'text',
   value: '',
+  onChange: () => {},
+  suggestions: [],
 };
 
 // especifica os tipos de dados dos campos e se é obrigatório
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.string),
   type: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default FormField;

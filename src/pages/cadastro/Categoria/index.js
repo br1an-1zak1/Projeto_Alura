@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
-import AnimationLoadings from './style';
+import AnimationLoadings from '../../../components/AnimationLoadings';
+import useForm from '../../../hooks/useForm';
 
 export default function CadastroCategoria() {
   const valoresIniciais = {
@@ -12,7 +13,7 @@ export default function CadastroCategoria() {
     cor: '#000000',
   };
   const [categorias, setCategorias] = useState([]);
-  const [valores, setValores] = useState(valoresIniciais);
+  const { valores, handleChange, clearForm } = useForm(valoresIniciais);
 
   useEffect(() => {
     const URL_TOP = window.location.hostname.includes('localhost')
@@ -26,23 +27,8 @@ export default function CadastroCategoria() {
       });
   }, []);
 
-  function setValor(chave, valor) {
-    setValores({
-      ...valores,
-      [chave]: valor,
-    });
-  }
-
-  function handleChange(infoDoEvento) {
-    // const {getAttribute, value} = infoDoEvento.target;
-    setValor(
-      infoDoEvento.target.getAttribute('name'),
-      infoDoEvento.target.value,
-    );
-  }
-
   return (
-    <PageDefault style={{ color: 'white' }}>
+    <PageDefault paddingAll={30} style={{ color: 'white' }}>
       <h1>
         Cadastro de Categoria:
         {' '}
@@ -52,7 +38,7 @@ export default function CadastroCategoria() {
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
         setCategorias([...categorias, valores]);
-        setValores(valoresIniciais);
+        clearForm();
       }}
       >
 
@@ -85,14 +71,10 @@ export default function CadastroCategoria() {
 
       {/* caso não haja categorias, será true e vai mostrar a div,
         se não, será false e não carrega a div */}
-      {categorias.length === 0 && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <AnimationLoadings />
-        </div>
-      )}
+      {categorias.length === 0 && (<AnimationLoadings />)}
 
-      <ul style={{ display: 'flex', justifyContent: 'center' }}>
-        {categorias.map((categoria) => <li key={`${categoria.nome}`}>{categoria.nome}</li>)}
+      <ul style={{ display: 'flex', justifyContent: 'center', flexFlow: 'column' }}>
+        {categorias.map((categoria) => <li key={`${categoria.titulo}`}>{categoria.titulo}</li>)}
       </ul>
 
       <Link to="/">Ir para Home</Link>
